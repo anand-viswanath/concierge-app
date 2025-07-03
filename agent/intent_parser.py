@@ -1,5 +1,6 @@
 import json
 import dateparser
+import re
 from datetime import datetime
 
 # Expected fields and their types for each intent
@@ -30,6 +31,39 @@ def normalize_date(date_str: str) -> str:
         return parsed.strftime("%d-%m-%Y")
     return date_str
 
+def is_placeholder(value):
+    return isinstance(value, str) and re.fullmatch(r"(string|none|null)", value.strip(), re.IGNORECASE)
+
+def validate_intent(intent_data):
+    intent = intent_data.get("intent")
+
+    if intent == "book_flight":
+        if not intent_data.get("from_city") or not intent_data.get("to_city"):
+            return False
+        if intent_data["from_city"].lower() == intent_data["to_city"].lower():
+            return False
+        if is_placeholder(intent_data["from_city"]) or is_placeholder(intent_data["to_city"]):
+            return False
+
+    elif intent == "book_restaurant":
+        if not intent_data.get("city") or not intent_data.get("cuisine"):
+            return False
+        if intent_data["city"].lower() == intent_data["cuisine"].lower():
+            return False
+        if is_placeholder(intent_data["city"]) or is_placeholder(intent_data["cuisine"]):
+            return False
+
+    elif intent == "get_weather":
+        if not intent_data.get("city"):
+            return False
+        if is_placeholder(intent_data["city"]):
+            return False
+
+    elif intent == "tell_joke":
+        return True
+
+    return True
+
 def parse_intent(raw_json: str) -> dict:
     try:
         parsed = json.loads(raw_json)
@@ -57,6 +91,13 @@ def parse_intent(raw_json: str) -> dict:
                 clean[field] = value
             else:
                 clean[field] = None  # invalid or missing field
+        
+        if not validate_intent(clean):
+            print("⚠️ Invalid intent payload — falling back to unknown.")
+            return {
+                "intent": "unknown",
+                "raw_input": raw_json
+            }
 
         return clean
 

@@ -25,7 +25,8 @@ def build_prompt(user_input: str) -> str:
 
     prompt = (
         "You are an AI that extracts a single JSON object matching user intent.\n"
-        "Only respond with one valid JSON object and nothing else.\n\n"
+        "Only respond with one valid JSON object and nothing else.\n"
+#         "Avoid using placeholder words like “string” or repeating intent fields as values.\n\n\n"
     )
 
     for intent, fields in SCHEMAS.items():
