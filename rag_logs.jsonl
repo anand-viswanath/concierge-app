@@ -1,0 +1,9 @@
+{"t": 1756127677.442954, "mode": "tool:get_weather", "q": "weather in sydney", "answer": null, "sources": []}
+{"t": 1756127756.112046, "mode": "tool:get_weather", "q": "weather in sydney", "answer": null, "sources": []}
+{"t": 1756128077.022366, "mode": "rag", "q": "what is langchain?", "answer": "I don\u2019t have relevant context in my docs for that. Add a source to /data and re-run `python ingestion.py`, or route this to a web tool.", "sources": []}
+{"t": 1756128204.2465248, "mode": "rag", "q": "what is langsmith", "answer": "I don\u2019t have relevant context in my docs for that. Add a source to /data and re-run `python ingestion.py`, or route this to a web tool.", "sources": []}
+{"t": 1756128851.870292, "mode": "rag", "q": "what is langsmith?", "answer": "I don\u2019t have relevant context in my docs for that. Add a source to /data and re-run `python ingestion.py`, or route this to a web tool.", "sources": []}
+{"t": 1756128995.912627, "mode": "rag", "q": "what is langsmith?", "answer": "I don\u2019t have relevant context in my docs for that. Add a source to /data and re-run `python ingestion.py`, or route this to a web tool.", "sources": []}
+{"t": 1756129020.963248, "mode": "rag", "q": "who is the author of rich dad poor dad?", "answer": "The author of \"Rich Dad Poor Dad\" is Robert T. Kiyosaki.", "sources": ["data/rich-dad-poor-dad.pdf"]}
+{"t": 1756129975.3528872, "mode": "rag", "q": "what is the best italian restaurant in sydney?", "answer": "I don\u2019t have relevant context in my docs for that. Add a source to /data and re-run `python ingestion.py`, or route this to a web tool.", "sources": []}
+{"t": 1756130237.8111281, "mode": "rag", "q": "which is the best restaurant in delhi?", "answer": "I don\u2019t have relevant context in my docs for that. Add a source to /data and re-run `python ingestion.py`, or route this to a web tool.", "sources": []}

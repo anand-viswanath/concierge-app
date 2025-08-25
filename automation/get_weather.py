@@ -19,7 +19,9 @@ def get_weather(data):
         response = requests.get(url)
         if response.status_code == 200:
             print(f"📍 Weather: {response.text}")
+            return response
         else:
             print("⚠️ Failed to fetch weather.")
+            return "Failed"
     except Exception as e:
         print(f"❌ Error fetching weather: {e}")
